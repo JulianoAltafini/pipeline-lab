@@ -1,0 +1,36 @@
+name: Pipeline HTML
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Listar arquivos
+        run: ls -la
+
+      - name: Validar index.html
+        run: |
+          if [ -f index.html ]; then
+            echo "Arquivo encontrado com sucesso"
+          else
+            echo "Arquivo index.html não encontrado"
+            exit 1
+          fi
+
+      - name: Simular build
+        run: echo "Build realizado"
+
+      - name: Simular deploy
+        run: echo "Deploy realizado com sucesso"
+        
